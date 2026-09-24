@@ -14,30 +14,6 @@ jobs:
       - name: Show operating system
         run: uname -a
 
-  build:
-      name: Build Application
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout source code
-          uses: actions/checkout@v6
-        - name: Setup Python
-          uses: actions/setup-python@v7
-          with:
-            python-version: "3.12"
-        - name: Build application
-          run: |
-            chmod +x build.sh
-            ./build.sh
-        - name: Show build output
-          run: |
-            ls -la build
-            cat build/build-info.txt
-        - name: Upload build artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: calculator-build
-            path: build/
-
   secrets-demo:
       runs-on: ubuntu-latest
       steps:
